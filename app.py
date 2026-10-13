@@ -74,7 +74,8 @@ st.markdown("""
 def get_api_key():
     key = os.getenv("OPENROUTER_API_KEY", "").strip()
     if not key:
-        key = st.session_state.get("session_api_key", "").strip()
+        #key = st.session_state.get("session_api_key", "").strip()
+        key = st.secrets.get("OPENROUTER_API_KEY", "")
     return key
 
 def ask_openrouter(messages, model, reasoning):
